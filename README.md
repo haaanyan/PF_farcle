@@ -37,7 +37,7 @@ fercle では掲示板で農業に関する悩みを相談し合ったり、自�
 https://drive.google.com/file/d/1Pr7tPv_95CqJphTkH9gsumO9mFqO6Pg5/view?usp=sharing
 - ワイヤーフレーム
 https://drive.google.com/file/d/1jg_swSuaz8QyltwjiJfooAQ-ht9KJ2Dy/view?usp=sharing
-- テーブル定義書
+- テーブル定義書・詳細仕様書
 https://docs.google.com/spreadsheets/d/1JSUfweM_51avOJ3KkA9Q1boShJHliTi0gACKLMr44Q0/edit?usp=sharing
 
 ## チャレンジ要素一覧
