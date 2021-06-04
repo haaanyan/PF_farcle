@@ -31,7 +31,6 @@ fercle では掲示板で農業に関する悩みを相談し合ったり、自�
 - 農業における悩みを相談したい時
 - 自慢の作物を共有したい時
 - 他の農家の人と交流したい時
--
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1Pr7tPv_95CqJphTkH9gsumO9mFqO6Pg5/view?usp=sharing)
 - [ワイヤーフレーム](https://drive.google.com/file/d/1jg_swSuaz8QyltwjiJfooAQ-ht9KJ2Dy/view?usp=sharing)
