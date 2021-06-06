@@ -1,1 +1,42 @@
-<h1>registrations</h1>
+<h2>Sign up</h2>
+
+<%= form_with model:@user, url:user_registration_path, local: true do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name, "名前" %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :prefecture, "お住まいの都道府県" %><br />
+    <%= f.select :prefecture, User.prefectures.keys, {} %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_image, "プロフィール画像" %><br />
+    <%= f.attachment_field :profile_image, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :product, "主な生産物" %><br />
+    <%= f.text_field :product, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :history, "農業従事歴" %><br />
+    <%= f.text_field :history, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "パスワード（６文字以上）" %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.submit "新規登録", class:"btn btn-success" %>
+  </div>
+<% end %>
