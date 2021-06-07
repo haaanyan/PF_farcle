@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_083248) do
+ActiveRecord::Schema.define(version: 2021_06_06_085711) do
 
   create_table "board_comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2021_06_05_083248) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "prefecture", default: 0, null: false
+    t.string "profile_image_id"
+    t.string "product"
+    t.integer "history"
+    t.string "introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
