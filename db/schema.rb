@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_085711) do
+ActiveRecord::Schema.define(version: 2021_06_07_075005) do
 
   create_table "board_comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2021_06_06_085711) do
   create_table "post_images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "caption"
+    t.string "image_id"
+    t.integer "user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
