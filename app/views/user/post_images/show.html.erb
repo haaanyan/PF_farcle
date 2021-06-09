@@ -1,11 +1,35 @@
 <div class="container">
-  <div class="post-body mt-3 ">
-    <%= attachment_image_tag @post_image, :image, size: "500x500" %>
-    <p>説明：<%= @post_image.caption %></p>
-    <p>ユーザーネーム：<%= @post_image.user.name %></p>
-    <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-    <% if @post_image.user == current_user %>
-      <%= link_to "削除", post_image_path(@post_image), method: :delete %>
-    <% end %>
+  <div class="row">
+    <div class= "col-md-4">
+      <div class="post-body mt-3 ">
+        <%= attachment_image_tag @post_image, :image, size: "300x300" %>
+        <p>説明：<%= @post_image.caption %></p>
+        <p>ユーザーネーム：<%= link_to @post_image.user.name, user_path(@user) %></p>
+        <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+        <% if @post_image.user == current_user %>
+          <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+        <% end %>
+        <div class="new-comment mt-3">
+          <%= form_with(model:[@post_image, @post_image_comment],local: true) do |f| %>
+            <%= f.text_area :comment, rows:'3', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="comments mt-3">
+        <p>コメント件数: <%= @post_image.post_image_comments.count %></p>
+        <% @post_image.post_image_comments.each do |post_image_comment| %>
+          <p><%= post_image_comment.user.name %><%= post_image_comment.created_at.strftime('%Y/%m/%d') %></p>
+          <p><%= post_image_comment.comment %></p>
+          <% if post_image_comment.user == current_user %>
+            <div class="comment-delete">
+              <%= link_to "削除する", post_image_post_image_comment_path(post_image_comment.post_image, post_image_comment), method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
