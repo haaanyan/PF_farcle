@@ -69,6 +69,7 @@
               <td>
                 <%= link_to post_image_path(post_image.id) do %>
                   <%= attachment_image_tag post_image, :image, size: "200x200" %>
+                  <p>コメント<%= post_image.post_image_comments.count %>件</p>
                 <% end %>
               </td>
             </tr>
