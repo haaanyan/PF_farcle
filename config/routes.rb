@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     resources :users do
       resource :relationships, only: [:create, :destroy]
-        get 'followings' => 'relationships#followings', as: 'followings'
-        get 'followers' => 'relationships#followers', as: 'followers'
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
 
     resources :post_images do
-      resource :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy, :show]
       resources :post_image_comments, only: [:create, :destroy]
     end
 
