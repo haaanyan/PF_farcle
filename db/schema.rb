@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_081853) do
+ActiveRecord::Schema.define(version: 2021_06_10_111846) do
 
   create_table "board_comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
+    t.integer "board_id"
+    t.integer "user_id"
   end
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "body"
+    t.integer "user_id"
   end
 
   create_table "favorites", force: :cascade do |t|

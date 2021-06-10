@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_images, dependent: :destroy
-
   has_many :post_image_comments, dependent: :destroy
-
   has_many :favorites, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :board_comments, dependent: :destroy
+
 
   #フォローしているユーザーとの関連
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy

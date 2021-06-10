@@ -1,2 +1,32 @@
-<h1>User::Boards#show</h1>
-<p>Find me in app/views/user/boards/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto mt-5">
+      <div class="boards">
+        <p><%= @board.title %></p>
+        <P><%= @board.body %></P>
+        <p>ユーザーネーム：<%= link_to @board.user.name, user_path(@user) %></p>
+        <p>投稿日時：<%= @board.created_at.strftime('%Y/%m/%d') %></p>
+        <% if @board.user == current_user %>
+          <p><%= link_to "編集する", edit_board_path(@board) %></p>
+          <p><%= link_to "スレッドを削除する", board_path(@board), method: :delete %></p>
+        <% end %>
+      </div>
+      <div class="board-comments">
+        <p>コメント件数: <%= @board.board_comments.count %> 件</p>
+        <% @board.board_comments.each do |board_comment| %>
+          <%= board_comment.user.name %>
+          <%= board_comment.comment %><%= board_comment.created_at.strftime('%Y/%m/%d') %>
+          <% if board_comment.user == current_user %>
+            <%= link_to "コメントを削除", board_board_comment_path(board_comment.board, board_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="new-comment">
+        <%= form_with(model: [@board, @board_comment], local: true) do |f| %>
+          <%= f.text_area :comment, placeholder: "コメント欄" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
