@@ -8,5 +8,3 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :introduction, :string
   end
 end
-
-

@@ -1,5 +1,4 @@
 class User::BoardCommentsController < ApplicationController
-
   def create
     board = Board.find(params[:board_id])
     comment = current_user.board_comments.new(board_comment_params)
@@ -14,8 +13,8 @@ class User::BoardCommentsController < ApplicationController
   end
 
   private
+
   def board_comment_params
     params.require(:board_comment).permit(:comment)
   end
-
 end

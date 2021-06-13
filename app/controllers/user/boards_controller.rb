@@ -41,5 +41,4 @@ class User::BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:title, :body)
   end
-
 end

@@ -1,5 +1,4 @@
 class User::FavoritesController < ApplicationController
-
   def create
     @post_image = PostImage.find(params[:post_image_id])
     favorite = current_user.favorites.new(post_image_id: @post_image.id)
@@ -16,5 +15,4 @@ class User::FavoritesController < ApplicationController
     post_image = PostImage.find(params[:post_image_id])
     @users = post_image.favorite_users
   end
-
 end

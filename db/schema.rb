@@ -10,70 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_10_111846) do
-
-  create_table "board_comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "comment"
-    t.integer "board_id"
-    t.integer "user_id"
+ActiveRecord::Schema.define(version: 20_210_610_111_846) do
+  create_table 'board_comments', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'comment'
+    t.integer 'board_id'
+    t.integer 'user_id'
   end
 
-  create_table "boards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "title"
-    t.text "body"
-    t.integer "user_id"
+  create_table 'boards', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'title'
+    t.text 'body'
+    t.integer 'user_id'
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "post_image_id"
+  create_table 'favorites', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'user_id'
+    t.integer 'post_image_id'
   end
 
-  create_table "post_image_comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "post_image_id"
+  create_table 'post_image_comments', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'comment'
+    t.integer 'user_id'
+    t.integer 'post_image_id'
   end
 
-  create_table "post_images", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "caption"
-    t.string "image_id"
-    t.integer "user_id"
+  create_table 'post_images', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'caption'
+    t.string 'image_id'
+    t.integer 'user_id'
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "following_id"
-    t.integer "follower_id"
+  create_table 'relationships', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'following_id'
+    t.integer 'follower_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "prefecture", default: 0, null: false
-    t.string "profile_image_id"
-    t.string "product"
-    t.integer "history"
-    t.string "introduction"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'name'
+    t.integer 'prefecture', default: 0, null: false
+    t.string 'profile_image_id'
+    t.string 'product'
+    t.integer 'history'
+    t.string 'introduction'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
-
 end

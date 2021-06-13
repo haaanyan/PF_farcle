@@ -17,5 +17,4 @@ class User::PostImageCommentsController < ApplicationController
   def post_image_comment_params
     params.require(:post_image_comment).permit(:comment)
   end
-
 end

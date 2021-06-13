@@ -20,11 +20,9 @@ class User::PostImagesController < ApplicationController
     @user = @post_image.user
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @post_image = PostImage.find(params[:id])
@@ -37,5 +35,4 @@ class User::PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:image, :caption)
   end
-
 end
