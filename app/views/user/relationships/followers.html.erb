@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mt-3">
+      <h2>Follower Users</h2>
+        <% if @users.exists? %>
+          <%= render 'user/relationships/follow', user: @user, users: @users %>
+        <% else %>
+          <p>あなたをフォローしているユーザーはいません</p>
+        <% end %>
+    </div>
+  </div>
+</div>
