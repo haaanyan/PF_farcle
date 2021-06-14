@@ -7,41 +7,31 @@
         <p>ユーザーネーム：<%= link_to @post_image.user.name, user_path(@user) %></p>
         <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
         <% if @post_image.user == current_user %>
-          <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+          <%= link_to "この投稿を削除する", post_image_path(@post_image), method: :delete %>
         <% end %>
 
       <!-- いいね機能 -->
-      <div id="favorites_buttons_<%= @post_image.id %>">
-        <%= render partial: 'user/favorites/favorite', locals: {post_image: @post_image} %>
-      </div>
-      <% if @post_image.favorites.exists? %>
-        <%= link_to "いいねしたユーザー", post_image_favorites_path(@post_image) %>
-      <% end %>
+        <div id="favorites_buttons_<%= @post_image.id %>">
+          <%= render partial: 'user/favorites/favorite', locals: {post_image: @post_image} %>
+        </div>
+        <% if @post_image.favorites.exists? %>
+          <%= link_to "いいねしたユーザーをチェックする", post_image_favorites_path(@post_image) %>
+        <% end %>
       <!-- いいね機能ここまで -->
 
       <!-- コメント機能 -->
-        <div class="new-comment mt-3">
-          <%= form_with(model:[@post_image, @post_image_comment],local: true) do |f| %>
+        <div class="comment_form mt-3">
+          <%= form_with(model:[@post_image, @post_image_comment]) do |f| %>
             <%= f.text_area :comment, rows:'3', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
+            <%= f.submit "送信する", class: "btn btn-outline-dark comment-submit float-right" %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="comments mt-3">
-        <p>コメント件数: <%= @post_image.post_image_comments.count %></p>
-        <% @post_image.post_image_comments.each do |post_image_comment| %>
-          <p><%= post_image_comment.user.name %><%= post_image_comment.created_at.strftime('%Y/%m/%d') %></p>
-          <p><%= post_image_comment.comment %></p>
-          <% if post_image_comment.user == current_user %>
-            <div class="comment-delete">
-            <%= link_to "削除する", post_image_post_image_comment_path(post_image_comment.post_image, post_image_comment), method: :delete %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+
+    <div class="post_image_comments col-md-6 mt-3">
+      <%= render partial: 'user/post_image_comments/index', locals: { post_image: @post_image } %>
     </div>
-    <!-- コメント機能ここまで -->
+      <!-- コメント機能ここまで -->
   </div>
 </div>
