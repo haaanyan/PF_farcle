@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :image
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :prefecture, presence: true
+  validates :product, presence: true
+  validates :history, presence: true
+  validates :introduction, presence: true
+
   has_many :post_images, dependent: :destroy
   has_many :post_image_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
