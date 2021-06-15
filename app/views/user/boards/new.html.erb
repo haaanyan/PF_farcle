@@ -1,16 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto mt-3">
-
-    <h2>新規投稿</h2>
-    <%= form_with model:@board, local:true do |f| %>
-      <h4>タイトル</h4>
-      <%= f.text_field :title %>
-      <h4>本文</h4>
-      <%= f.text_area :body %>
-      <%= f.submit '投稿' %>
-      <% end %>
-
+    <div class="col-md-10 mx-auto mt-5">
+      <div class="card text-white bg-info mt-3">
+        <h4 class="card-header">新規トピック作成</h4>
+          <%= form_with model:@board, local: true do |f| %>
+            <div class="card-body">
+              <p>トピックタイトル</p>
+              <div class="input-group mb-3">
+                <%= f.text_field :title, class: "form-control" %>
+              </div>
+              <p>本文</p>
+              <div class="input-group">
+                <%= f.text_area :body, class: "form-control" %>
+              </div>
+              <div class="text-right mt-3">
+                <%= f.submit "新規トピックを作成する", class: "btn btn-outline-light" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
+
+

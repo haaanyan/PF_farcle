@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_125727) do
     t.string "image_id", null: false
     t.integer "user_id", null: false
   end
+  
 
   create_table "relationships", force: :cascade do |t|
     t.datetime "created_at", null: false

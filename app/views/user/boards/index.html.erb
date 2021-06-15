@@ -1,10 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto mt-5">
-      <%= link_to "新規作成", new_board_path, class: "btn btn-success" %>
-      <% @boards.each do |board| %>
-      <p><%= link_to board.title, board_path(board) %></p>
-      <% end %>
-    </div>
+    <div class="col-md-8 mx-auto mt-5">
+      <div class="card mb-3">
+        <h2 class="card-header text-center">交流掲示板</h2>
+          <div class="card-body text-info">
+            <p class="card-text">日々の作業での悩みや疑問点を共有しませんか?</p>
+          </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to "+トピックを新規作成する", new_board_path, class: "btn btn-outline-primary" %>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">トピック一覧</li>
+            <% @boards.each do |board| %>
+              <li class="list-group-item d-flex">
+              <%= link_to board.title, board_path(board), class: "d-inline-flex flex-grow-1" %>
+              <p class="d-inline-flex text-right mb-0">コメント件数: <%= board.board_comments.count %> 件</p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
   </div>
 </div>

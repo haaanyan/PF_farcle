@@ -1,23 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto mt-5">
-      <div class="boards">
-        <p><%= @board.title %></p>
-        <P><%= @board.body %></P>
-        <p>ユーザーネーム：<%= link_to @board.user.name, user_path(@user) %></p>
-        <p>投稿日時：<%= @board.created_at.strftime('%Y/%m/%d') %></p>
-        <% if @board.user == current_user %>
-          <p><%= link_to "編集する", edit_board_path(@board) %></p>
-          <p><%= link_to "スレッドを削除する", board_path(@board), method: :delete %></p>
-        <% end %>
+    <div class="col-md-8 mx-auto mt-5">
+      <div class="card">
+        <div class="card-header d-flex">
+          <p class="d-inline-flex flex-grow-1 mb-0"><%= @board.title %></p>
+          <p class="d-inline-flex text-right mb-0">
+            投稿者:  <%= link_to @board.user.name, user_path(@user) %>
+            ( 投稿日: <%= @board.created_at.strftime('%Y/%m/%d %H:%M') %> )
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= @board.body %></li>
+          <li class="list-group-item text-right">
+            <% if @board.user == current_user %>
+              <%= link_to "編集する", edit_board_path(@board), class: "btn btn-outline-info" %>
+              <%= link_to "このスレッドを削除する", board_path(@board), class: "btn btn-outline-danger", method: :delete %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="card text-white bg-info mt-3">
+        <div class="card-header">コメントする</div>
+          <%= form_with(model: [@board, @board_comment]) do |f| %>
+            <div class="card-body">
+              <div class="input-group">
+                <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control" %>
+              </div>
+              <p>※誰かを傷つける内容ではありませんか?マナーを守ってコメントしましょう。</p>
+              <div class="text-right mt-3">
+                <%= f.submit "コメントを送信", class: "btn btn-outline-light" %>
+              </div>
+            </div>
+          <% end %>
       </div>
       <div class="board-comments">
-        <%= render 'user/board_comments/index', board: @board %>
+      <%= render 'user/board_comments/index', board: @board %>
       </div>
-        <%= form_with(model: [@board, @board_comment]) do |f| %>
-          <%= f.text_area :comment, placeholder: "コメント欄" %>
-          <%= f.submit "送信" %>
-        <% end %>
     </div>
   </div>
 </div>
+
+
