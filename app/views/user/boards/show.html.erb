@@ -6,7 +6,7 @@
           <p class="d-inline-flex flex-grow-1 mb-0"><%= @board.title %></p>
           <p class="d-inline-flex text-right mb-0">
             投稿者:  <%= link_to @board.user.name, user_path(@user) %>
-            ( 投稿日: <%= @board.created_at.strftime('%Y/%m/%d') %> )
+            ( 投稿日: <%= @board.created_at.strftime('%Y/%m/%d %H:%M') %> )
           </p>
         </div>
         <ul class="list-group list-group-flush">
@@ -24,13 +24,17 @@
           <%= form_with(model: [@board, @board_comment]) do |f| %>
             <div class="card-body">
               <div class="input-group">
-                <%= f.text_area :comment, placeholder: "コメント欄", class: "form-control" %>
+                <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control" %>
               </div>
+              <p>※誰かを傷つける内容ではありませんか?マナーを守ってコメントしましょう。</p>
               <div class="text-right mt-3">
-                <%= f.submit "送信", class: "btn btn-outline-primary" %>
+                <%= f.submit "コメントを送信", class: "btn btn-outline-light" %>
               </div>
             </div>
           <% end %>
+      </div>
+      <div class="board-comments">
+      <%= render 'user/board_comments/index', board: @board %>
       </div>
     </div>
   </div>

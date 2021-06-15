@@ -1,8 +1,15 @@
-<p>コメント件数: <%= board.board_comments.count %> 件</p>
-<% board.board_comments.each do |board_comment| %>
-  <p><%= board_comment.user.name %></p>
-  <p><%= board_comment.comment %><%= board_comment.created_at.strftime('%Y/%m/%d') %></p>
-    <% if board_comment.user == current_user %>
-      <%= link_to "コメントを削除", board_board_comment_path(board_comment.board, board_comment), method: :delete, remote: true %>
+<div class="card mt-3">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">コメント一覧(全 <%= board.board_comments.count %> 件)</li>
+    <% board.board_comments.each do |board_comment| %>
+      <li class="list-group-item">
+        <i class="fas fa-user"></i>
+        <%= link_to board_comment.user.name, user_path(@user) %>(<%= board_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+        </li>
+      <li class="list-group-item"><%= board_comment.comment %> </li>
+      <% if board_comment.user == current_user %>
+        <li class="list-group-item"><%= link_to "コメントを削除", board_board_comment_path(board_comment.board, board_comment), class: "btn btn-danger", method: :delete, remote: true %></li>
+      <% end %>
     <% end %>
-<% end %>
+  </ul>
+</div>
