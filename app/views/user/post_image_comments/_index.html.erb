@@ -1,10 +1,15 @@
-<p>コメント数: <%= post_image.post_image_comments.count %></p>
-<% post_image.post_image_comments.each do |post_image_comment| %>
-  <p><%= post_image_comment.user.name %><%= post_image_comment.created_at.strftime('%Y/%m/%d') %></p>
-  <p><%= post_image_comment.comment %></p>
-  <% if post_image_comment.user == current_user %>
-    <div class="comment-delete">
-      <%= link_to "削除する", post_image_post_image_comment_path(post_image_comment.post_image, post_image_comment), method: :delete, remote: true %>
-    </div>
-  <% end %>
-<% end %>
+<div class="card mt-3">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">コメント一覧(全 <%= post_image.post_image_comments.count %> 件)</li>
+    <% post_image.post_image_comments.each do |post_image_comment| %>
+      <li class="list-group-item">
+        <i class="fas fa-user"></i>
+        <%= post_image_comment.user.name %>(<%= post_image_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+        </li>
+      <li class="list-group-item"><%= post_image_comment.comment %> </li>
+      <% if post_image_comment.user == current_user %>
+        <li class="list-group-item"><%= link_to "コメントを削除", post_image_post_image_comment_path(post_image_comment.post_image,post_image_comment), class: "btn btn-danger", method: :delete, remote: true %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
