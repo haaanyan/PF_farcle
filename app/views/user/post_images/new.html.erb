@@ -9,7 +9,7 @@
               <div class="input-group">
                 <div class="custom-file">
                   <%= f.attachment_field :image, class: "custom-file-input" %>
-                  <label class="custom-file-label">ファイルを選んでください</label>
+                  <%= f.label :image, "ファイルを選んでください", class: "custom-file-label" %>
                 </div>
               </div>
               <p class="mt-3">本文</p>
