@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class= "col-md-4">
-      <div class="post-body mt-3 ">
+    <div class= "col-md-6 mt-3">
+      <div class="post-body">
         <%= attachment_image_tag @post_image, :image, size: "300x300" %>
         <p>説明：<%= @post_image.caption %></p>
         <p>ユーザーネーム：<%= link_to @post_image.user.name, user_path(@user) %></p>
@@ -15,20 +15,29 @@
           <%= render partial: 'user/favorites/favorite', locals: {post_image: @post_image} %>
         </div>
       <!-- いいね機能ここまで -->
-
-      <!-- コメント機能 -->
-        <div class="comment_form">
-          <%= form_with(model:[@post_image, @post_image_comment]) do |f| %>
-            <%= f.text_area :comment, rows:'3', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", class: "btn btn-outline-dark comment-submit float-right" %>
-          <% end %>
-        </div>
       </div>
     </div>
-
-    <div class="post_image_comments col-md-6 mt-3">
-      <%= render partial: 'user/post_image_comments/index', locals: { post_image: @post_image } %>
+      <!-- コメント機能 -->
+    <div class="col-md-4 mt-3">
+      <div class="card text-black bg-light mt-3">
+        <div class="card-header">コメントする</div>
+          <%= form_with(model: [@post_image, @post_image_comment]) do |f| %>
+            <div class="card-body">
+              <div class="input-group">
+                <%= f.text_area :comment, placeholder: "コメントをここに入力してください", class: "form-control" %>
+              </div>
+              <div class="text-right mt-3">
+                <%= f.submit "コメントを送信", class: "btn btn-outline-dark" %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+      <div class="post_image_comments">
+        <%= render partial: 'user/post_image_comments/index', locals: { post_image: @post_image } %>
+      </div>
     </div>
       <!-- コメント機能ここまで -->
   </div>
 </div>
+
+
