@@ -25,9 +25,9 @@ class User::BoardsController < ApplicationController
   end
 
   def update
-    board = Board.find(params[:id])
-    board.update(board_params)
-    redirect_to board_path(board)
+    @board = Board.find(params[:id])
+    @board.update(board_params)
+    redirect_to board_path(@board.id)
   end
 
   def destroy
