@@ -2,34 +2,36 @@
   <div class="row">
     <div class="card col-md-12 mx-auto mt-3">
       <h2 class="card-header text-center">Photo Gallery</h2>
-          <div class="card-body text-info">
-            <p class="card-text text-center">自慢の畑や生産物をみんなと共有しましょう!</p>
-              <p class="text-center">
-                <%= link_to new_post_image_path, class:"btn btn-outline-primary" do %>
-                  <i class="fas fa-camera">  新規投稿する</i>
-                <% end %>
-              </p>
-          </div>
-      </div>
-
-      <% @post_images.each do |post_image| %>
-      <div class="card-deck mt-5">
-        <div class="card">
-          <%= link_to post_image_path(post_image.id) do %>
-            <%= attachment_image_tag post_image, :image, size: "250x200" %>
+      <div class="card-body text-info">
+        <p class="card-text text-center">自慢の畑や生産物をみんなと共有しましょう!</p>
+        <p class="text-center">
+          <%= link_to new_post_image_path, class:"btn btn-outline-primary" do %>
+            <i class="fas fa-camera">  新規投稿する</i>
           <% end %>
-        <div class="card-body">
-          <h6 class="card-title"><i class="far fa-user" style="color:darkblue"></i> <%= post_image.user.name %></h5>
-          <p class="card-text">
-            <i class="far fa-comments"></i> <%= post_image.post_image_comments.count %>
-            <i class="fas fa-heart" style="color:violet"></i>︎ <%= post_image.favorites.count %>
-          </p>
-        </div>
-        <div class="card-footer text-right">
-          <small class="text-muted"><%= time_ago_in_words(post_image.updated_at) %></small>
-        </div>
+        </p>
+      </div>
+    </div>
+
+    <% @post_images.each do |post_image| %>
+      <div class="col-md-3">
+        <div class="card-deck mt-5">
+          <div class="card">
+            <%= link_to post_image_path(post_image.id) do %>
+              <%= attachment_image_tag post_image, :image, size: "250x200", class:"card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <h6 class="card-title"><i class="far fa-user" style="color:darkblue"></i> <%= post_image.user.name %></h6>
+              <p class="card-text">
+                <i class="far fa-comments"></i> <%= post_image.post_image_comments.count %>
+                <i class="fas fa-heart" style="color:violet"></i>︎ <%= post_image.favorites.count %>
+              </p>
+            </div>
+            <div class="card-footer text-right">
+              <small class="text-muted"><%= time_ago_in_words(post_image.updated_at) %></small>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
-   </div>
+  </div>
 </div>

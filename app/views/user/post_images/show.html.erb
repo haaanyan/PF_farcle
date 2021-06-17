@@ -1,26 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class= "col-md-6 mt-3">
+    <div class= "col-md-8 mt-4">
       <div class="post-body">
-        <%= attachment_image_tag @post_image, :image, size: "300x300" %>
-        <p>説明：<%= @post_image.caption %></p>
-        <p>ユーザーネーム：<%= link_to @post_image.user.name, user_path(@user) %></p>
-        <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-        <% if @post_image.user == current_user %>
-          <%= link_to "この投稿を削除する", post_image_path(@post_image), method: :delete %>
-        <% end %>
-
-      <!-- いいね機能 -->
-        <div id="favorites_buttons_<%= @post_image.id %>">
-          <%= render partial: 'user/favorites/favorite', locals: {post_image: @post_image} %>
+        <%= attachment_image_tag @post_image, :image, class: "img-fluid rounded"  %>
+        <div class="card border-light mt-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= attachment_image_tag @user, :profile_image, size: "50x50", format: "jpeg", fallback: "image/no_image.jpg", class: "rounded-circle" %>
+              <%= link_to @post_image.user.name, user_path(@user) %>
+              <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+              </h5>
+              <p class="card-text"><%= @post_image.caption %></p>
+              <p class="card-text">
+                <div id="favorites_buttons_<%= @post_image.id %>">
+                  <%= render partial: 'user/favorites/favorite', locals: {post_image: @post_image} %>
+                </div>
+              </p>
+              <p class="card-text text-right">
+                <% if @post_image.user == current_user %>
+                  <%= link_to "編集する", edit_post_image_path(@post_image), class:"btn btn-outline-info" %>
+                  <%= link_to "この投稿を削除", post_image_path(@post_image), method: :delete, class:"btn btn-outline-secondary", data: {confirm: "削除しますか?"} %>
+                <% end %>
+              </p>
+          </div>
         </div>
-      <!-- いいね機能ここまで -->
       </div>
     </div>
       <!-- コメント機能 -->
-    <div class="col-md-4 mt-3">
+    <div class="col-md-4 mt-2">
       <div class="card text-black bg-light mt-3">
-        <div class="card-header">コメントする</div>
           <%= form_with(model: [@post_image, @post_image_comment]) do |f| %>
             <div class="card-body">
               <div class="input-group">

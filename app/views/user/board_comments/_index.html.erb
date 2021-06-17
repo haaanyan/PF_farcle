@@ -8,7 +8,9 @@
         </li>
       <li class="list-group-item"><%= board_comment.comment %> </li>
       <% if board_comment.user == current_user %>
-        <li class="list-group-item"><%= link_to "コメントを削除", board_board_comment_path(board_comment.board, board_comment), class: "btn btn-danger", method: :delete, remote: true %></li>
+        <li class="list-group-item">
+          <%= link_to "コメントを削除", board_board_comment_path(board_comment.board, board_comment), class:"text-muted", method: :delete, remote: true %>
+        </li>
       <% end %>
     <% end %>
   </ul>
