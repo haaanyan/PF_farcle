@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class= "col-md-8 mt-4">
+    <div class= "col-md-8 col-sm-10 mx-auto mt-4">
       <div class="post-body">
         <%= attachment_image_tag @post_image, :image, class: "img-fluid rounded"  %>
         <div class="card border-light mt-3">
@@ -27,7 +27,7 @@
       </div>
     </div>
       <!-- コメント機能 -->
-    <div class="col-md-4 mt-2">
+    <div class="col-md-4 col-sm-10 mx-auto mt-2">
       <div class="card text-black bg-light mt-3">
           <%= form_with(model: [@post_image, @post_image_comment]) do |f| %>
             <div class="card-body">

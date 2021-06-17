@@ -14,7 +14,7 @@
           <li class="list-group-item text-right">
             <% if @board.user == current_user %>
               <%= link_to "編集する", edit_board_path(@board), class: "btn btn-outline-info" %>
-              <%= link_to "このスレッドを削除する", board_path(@board), class: "btn btn-outline-danger", method: :delete, data: {confirm: "削除しますか?"} %>
+              <%= link_to "このスレッドを削除する", board_path(@board), class: "btn btn-outline-secondary", method: :delete, data: {confirm: "削除しますか?"} %>
             <% end %>
           </li>
         </ul>
