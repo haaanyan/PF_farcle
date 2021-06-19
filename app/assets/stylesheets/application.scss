@@ -19,23 +19,16 @@
 @import "theme_1623206273160" ;
 
 
-.top_page {
-  background-image: image-url('image/landscape_00025.jpg');
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-} 
-
-.top_page h1 {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;/*余計な隙間を除く*/
-  padding:0;/*余計な隙間を除く*/
-  color: white;/*アイコン色*/
-  font-size: 60px;/*サイズ*/
-} 
+  .bg1{
+    background-image: image-url("image/kht0038-041");
+    background-size: cover;
+    background: contain;
+    height: 50vh;
+    margin-bottom: 0;
+  }
+  .bg2 {
+    background-image: image-url("image/publicdomainq-0034031kbu");
+    background-size: cover;
+    background: contain;
+    height: 80vh;
+  }
