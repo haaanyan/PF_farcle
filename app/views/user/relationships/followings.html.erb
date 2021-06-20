@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mx-auto mt-3">
+    <div class="col-md-10 mt-3">
+      <nav class="nav nav-pills nav-fill mb-3">
+        <%= link_to "Followers", user_followers_path(@user), class: "nav-item nav-link" %>
+        <%= link_to "Followings", "#", class: "nav-item nav-link active" %>
+      </nav>
       <h2>Follow Users</h2>
         <% if @users.exists? %>
           <%= render 'user/relationships/follow', user: @user, users: @users %>
