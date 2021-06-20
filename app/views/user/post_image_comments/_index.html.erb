@@ -3,8 +3,11 @@
     <li class="list-group-item text-center">コメント(全 <%= post_image.post_image_comments.count %> 件)</li>
     <% post_image.post_image_comments.each do |post_image_comment| %>
       <li class="list-group-item">
+        <%= link_to user_path(post_image_comment.user) do %>
         <i class="fas fa-user"></i>
-        <%= post_image_comment.user.name %>(<%= post_image_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+        <%= post_image_comment.user.name %>
+        <% end %>
+        (<%= post_image_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
         <% if post_image_comment.user == current_user %>
           <%= link_to "削除", post_image_post_image_comment_path(post_image_comment.post_image,post_image_comment), class: "text-muted", method: :delete, remote: true %>
         <% end %>
