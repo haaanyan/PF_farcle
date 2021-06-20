@@ -36,10 +36,16 @@
   footer{
     width: 100%;
   }
+
+/*エラーメッセージ表示の際にフォームのレイアウトが崩れるのを防止*/
+  .field_with_errors {
+    display: contents;
+  }
+
 /*画面サイズに応じて文字サイズを変更*/
   body, html { font-size: 10px; }
     @media screen and (min-width: 360px) and (max-width: 640px) { body, html { font-size: 9px; } }
-    @media screen and (min-width: 576px) and (max-width: 768px) { body, html { font-size: 30px; } }
-    @media screen and (min-width: 769px) and (max-width: 992px) { body, html { font-size: 30px; } }
+    @media screen and (min-width: 576px) and (max-width: 768px) { body, html { font-size: 16px; } }
+    @media screen and (min-width: 769px) and (max-width: 992px) { body, html { font-size: 16px; } }
     @media screen and (min-width: 993px) and (max-width: 1200px) { body, html { font-size: 16px; } }
-    @media screen and (min-width: 1201px) { body, html { font-size: 20px; } }
+    @media screen and (min-width: 1201px) { body, html { font-size: 16px; } }
