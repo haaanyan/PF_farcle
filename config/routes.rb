@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     end
 
     resources :boards do
+      collection do
+        get 'search'
+      end
       resources :board_comments, only: %i[create destroy]
     end
   end

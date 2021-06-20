@@ -1,6 +1,7 @@
 class User::BoardsController < ApplicationController
   def index
     @boards = Board.all
+    @keyword = params[:keyword]
   end
 
   def new
@@ -43,6 +44,12 @@ class User::BoardsController < ApplicationController
     @board.destroy
     flash[:notice] = "トピックを削除しました"
     redirect_to boards_path
+  end
+
+  def search
+    @boards = Boards.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
 
   private
