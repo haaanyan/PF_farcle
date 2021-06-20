@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      user: 会員
+      post_image: 投稿画像
+      board: 掲示板
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        prefecture: お住まいの地域
+        profile_image: プロフィール画像
+        product: 生産物
+        history: 農業従事歴
+        introduction: 自己紹介文
+        password: パスワード
+      post_image:
+        image: 画像
+        caption: 説明
+      board:
+        title: タイトル
+        body: 本文
+
