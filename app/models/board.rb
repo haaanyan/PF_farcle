@@ -6,8 +6,4 @@ class Board < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
-  def self.find_boards(keyword)
-    Board.where("title LIKE? OR body LIKE?", "%#{keyword}%", "%#{keyword}%").order(updated_at: :desc)
-  end
-
 end
