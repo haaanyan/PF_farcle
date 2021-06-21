@@ -9,9 +9,19 @@
             <p class="card-text">日々の作業での悩みや疑問点を共有しませんか?</p>
           </div>
       </div>
+        <%= form_with url: search_boards_path, method: :get, local: true, class:"form-inline mb-2" do |f| %>
+          <div class="form-group flex-grow-1">
+            <%= f.text_field :keyword, value: @keyword, class: "form-control flex-grow-1 mr-1", placeholder: "検索キーワード入力" %>
+            <%= button_tag type: "submit", class: "btn btn-outline-primary" do %>
+              <i class="fas fa-search"></i>トピック検索
+            <% end %>
+          </div>
+        <% end %>
       <div class="card">
         <div class="card-header">
-          <%= link_to "+トピックを新規作成する", new_board_path, class: "btn btn-outline-primary" %>
+          <%= link_to new_board_path, class: "btn btn-outline-primary" do %>
+            <i class="fas fa-plus"></i> 新規トピック作成
+          <% end %>
         </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center">トピック一覧</li>

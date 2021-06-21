@@ -7,7 +7,7 @@
         <i class="fas fa-user"></i>
         <%= post_image_comment.user.name %>
         <% end %>
-        (<%= post_image_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+        (<%= time_ago_in_words(post_image_comment.updated_at) %>前)
         <% if post_image_comment.user == current_user %>
           <%= link_to "削除", post_image_post_image_comment_path(post_image_comment.post_image,post_image_comment), class: "text-muted", method: :delete, remote: true %>
         <% end %>

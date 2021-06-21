@@ -1,6 +1,7 @@
 class User::BoardsController < ApplicationController
   def index
     @boards = Board.all
+    @keyword = params[:keyword]
   end
 
   def new
@@ -45,8 +46,16 @@ class User::BoardsController < ApplicationController
     redirect_to boards_path
   end
 
+  def search
+    @keyword = params[:keyword]
+    @boards = find_boards(@keyword)
+  end
+
   private
 
+  def find_boards(keyword)
+    Board.where("title LIKE? OR body LIKE?", "%#{keyword}%", "%#{keyword}%").order(updated_at: :desc)
+  end
   def board_params
     params.require(:board).permit(:title, :body)
   end

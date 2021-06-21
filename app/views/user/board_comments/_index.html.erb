@@ -7,7 +7,7 @@
           <i class="fas fa-user"></i>
           <%= board_comment.user.name %>
         <% end %>
-        (<%= board_comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+        (<%= time_ago_in_words(board_comment.updated_at) %>前)
       </li>
       <li class="list-group-item"><%= board_comment.comment %> </li>
       <% if board_comment.user == current_user %>
