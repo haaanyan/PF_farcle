@@ -6,4 +6,9 @@ class Board < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
+  #トピック検索用
+  def self.look_for(keyword)
+    Board.where("title LIKE? OR body LIKE?", "%#{keyword}%", "%#{keyword}%").order(updated_at: :desc)
+  end
+
 end
