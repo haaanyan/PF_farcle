@@ -4,9 +4,11 @@
   <div class="row">
     <div class="col-md-10 mx-auto mt-3">
       <div class="card mb-3">
-        <h2 class="card-header text-center">交流掲示板</h2>
-          <div class="card-body text-info">
-            <p class="card-text">日々の作業での悩みや疑問点を共有しませんか?</p>
+        <h2 class="card-header text-center bg-light">farcle Community</h2>
+          <div class="card-body text-primary">
+            <p class="card-text">農業仲間の交流掲示板です。</p>
+            <p class="card-text">悩みや疑問を相談したり、近況を共有することができます。</p>
+            <p class="card-text">日々の仕事の息抜きにぜひご利用ください！</p>
           </div>
       </div>
         <%= form_with url: search_boards_path, method: :get, local: true, class:"form-inline mb-2" do |f| %>
@@ -18,17 +20,17 @@
           </div>
         <% end %>
       <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-light">
           <%= link_to new_board_path, class: "btn btn-outline-primary" do %>
             <i class="fas fa-plus"></i> 新規トピック作成
           <% end %>
         </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">トピック一覧</li>
+            <li class="list-group-item text-center bg-light">トピック一覧</li>
             <% @boards.each do |board| %>
-              <li class="list-group-item d-flex">
+              <li class="list-group-item d-flex bg-light">
               <%= link_to board.title, board_path(board), class: "d-inline-flex flex-grow-1" %>
-              <p class="d-inline-flex text-right mb-0">コメント件数: <%= board.board_comments.count %> 件</p>
+              <p class="d-inline-flex text-right mb-0">コメント件数: <%= board.board_comments.size %> 件</p>
               </li>
             <% end %>
           </ul>
