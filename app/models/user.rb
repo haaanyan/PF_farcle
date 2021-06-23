@@ -29,12 +29,11 @@ class User < ApplicationRecord
 
   # フォロー機能のメソッド
   def follow(user)
-    Relationship.create(follower_id: user.id, following_id: self.id)
+    Relationship.create(follower_id: self.id, following_id: user.id)
   end
 
-
   def unfollow(user)
-    relationship = Relationship.find_by(follower_id: user.id, following_id: self.id)
+    relationship = Relationship.find_by(follower_id: self.id, following_id: user.id)
     # nilチェック
     if relationship
       relationship.destroy
