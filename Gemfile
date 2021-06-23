@@ -56,7 +56,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails'
 end
 
@@ -74,6 +73,8 @@ gem 'kaminari', '~> 0.17.0'
 gem 'rails-i18n'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+gem 'faker'
+
 
 gem 'dotenv-rails'
 group :production do
