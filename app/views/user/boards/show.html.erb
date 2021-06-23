@@ -2,23 +2,25 @@
 <div class="container">
   <%= render "shared/flash_message" %>
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-10 mx-auto mt-5">
+    <div class="col-lg-9 col-md-9 col-sm-10 mx-auto mt-5">
       <div class="card">
         <div class="card-header d-flex">
-          <p class="d-inline-flex flex-grow-1 mb-0"><%= @board.title %></p>
-          <p class="d-inline-flex text-right mb-0">
+          <p class="d-inline-flex text-left mb-0">
             投稿者:  <%= link_to @board.user.name, user_path(@user) %>
             ( 投稿日: <%= @board.created_at.strftime('%Y/%m/%d %H:%M') %> )
           </p>
         </div>
+        <div class="card-header d-flex">
+          <p class="d-inline-flex flex-grow-1 mb-0"><%= @board.title %></p>
+        </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><%= @board.body %></li>
-          <li class="list-group-item text-right">
-            <% if @board.user == current_user %>
+          <% if @board.user == current_user %>
+            <li class="list-group-item text-right">
               <%= link_to "編集する", edit_board_path(@board), class: "btn btn-outline-info" %>
               <%= link_to "このスレッドを削除する", board_path(@board), class: "btn btn-outline-secondary", method: :delete, data: {confirm: "削除しますか?"} %>
-            <% end %>
-          </li>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="card text-white bg-info mt-3">

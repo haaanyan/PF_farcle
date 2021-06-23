@@ -8,7 +8,7 @@
       </nav>
       <h2>Follower Users</h2>
         <% if @users.exists? %>
-          <%= render 'user/relationships/follow', user: @user, users: @users %>
+          <%= render 'shared/users', user: @user, users: @users %>
         <% else %>
           <p>あなたをフォローしているユーザーはいません</p>
         <% end %>
