@@ -28,12 +28,17 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :following
 
   # フォロー機能のメソッド
-  def follow(user_id)
-    relationships.create(following_id: user_id)
+  def follow(user)
+    Relationship.create(follower_id: user.id, following_id: self.id)
   end
 
-  def unfollow(user_id)
-    relationships.find_by(following_id: user_id).destroy
+
+  def unfollow(user)
+    relationship = Relationship.find_by(follower_id: user.id, following_id: self.id)
+    # nilチェック
+    if relationship
+      relationship.destroy
+    end
   end
 
   def following?(user)

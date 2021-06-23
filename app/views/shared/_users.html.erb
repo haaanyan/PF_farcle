@@ -1,0 +1,16 @@
+<% users.each do |user| %>
+  <%= link_to user_path(user) do %>
+    <div class="card border-0 mb-2">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= attachment_image_tag user, :profile_image, size: "100x100", format: "jpeg", fallback: "image/no_image.jpg", class: "rounded-circle" %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p class"card-text"><%= user.name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
