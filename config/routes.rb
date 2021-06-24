@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope module: 'user' do
-    devise_for :users, only: %i[sessions registrations]
+    devise_for :users, only: [:sessions, :registrations], controllers: {
+      :sessions => 'user/sessions',
+      :registrations => 'user/registrations'
+    }
     root to: 'homes#top'
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     resources :users do
       resource :relationships, only: %i[create destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
