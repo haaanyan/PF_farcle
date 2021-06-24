@@ -1,4 +1,6 @@
 class User::BoardCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @board = Board.find(params[:board_id])
     @board_comment = BoardComment.new(board_comment_params)

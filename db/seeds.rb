@@ -41,7 +41,7 @@ end
 
 10.times do |n|
   PostImage.create!(
-  caption: Faker::Lorem.unique.paragraph,
+  caption: Faker::Lorem.unique.paragraph ,
   user_id: User.find(n+1).id,
   image: File.open("#{Rails.root}/seed_image/seed_image(#{n}).jpeg")
   )
