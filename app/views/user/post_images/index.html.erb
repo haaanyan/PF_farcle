@@ -2,18 +2,17 @@
 <div class="container">
   <%= render "shared/flash_message" %>
   <div class="row">
-    <div class="card col-md-12 mx-auto mt-3">
-      <h2 class="card-header text-center bg-light">Photo Gallery</h2>
-      <div class="card-body text-info">
-        <p class="card-text text-center">自慢の畑や生産物をみんなと共有しましょう!</p>
-        <p class="text-center">
+    <div class="col-md-12 mx-auto mt-3">
+      <div class="jumbotron">
+      <h2 class="display-4">Photo Gallery</h2>
+      <p class="lead">自慢の畑や生産物を仲間と共有してみませんか？</p>
+      <hr class="my-4">
+      <p>お気に入りの写真を見つけたら、ぜひいいねやコメントをしてみましょう!他の仲間の励みになります。</p>
           <%= link_to new_post_image_path, class:"btn btn-outline-primary" do %>
             <i class="fas fa-camera">  新規投稿する</i>
           <% end %>
-        </p>
       </div>
     </div>
-
     <% @post_images.each do |post_image| %>
       <div class="col-md-3">
         <div class="card-deck mt-5">
@@ -24,7 +23,9 @@
             <div class="card-body">
               <h6 class="card-title">
                 <i class="far fa-user" style="color:darkblue"></i>
-                <%= post_image.user.name %>
+                  <%= link_to user_path(post_image.user) do %>
+                    <%= post_image.user.name %>
+                  <% end %>
               </h6>
               <p class="card-text">
                 <i class="far fa-comments"></i> <%= post_image.post_image_comments.count %>

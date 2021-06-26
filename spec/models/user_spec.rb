@@ -1,28 +1,56 @@
 require 'rails_helper'
 
-RSpec.describe "Userモデルのテスト", type: :model do
-  context '有効な値の場合' do
-    it "登録できる" do
-      expect(build(:user)).to be_valid
+RSpec.describe 'Userモデルのテスト', type: :model do
+  describe 'バリデーションのテスト' do
+    subject { user.valid? }
+
+    let!(:other_user) { create(:user) }
+    let(:user) { build(:user) }
+
+    context 'nameカラム' do
+      it '空欄でないこと' do
+        user.name = ''
+        is_expected.to eq false
+      end
+      it '2文字以上であること: 1文字は×' do
+        user.name = Faker::Lorem.characters(number: 1)
+        is_expected.to eq false
+      end
+      it '2文字以上であること: 2文字は〇' do
+        user.name = Faker::Lorem.characters(number: 2)
+        is_expected.to eq true
+      end
+      it '15文字以下であること: 15文字は〇' do
+        user.name = Faker::Lorem.characters(number: 15)
+        is_expected.to eq true
+      end
+      it '15文字以下であること: 16文字は×' do
+        user.name = Faker::Lorem.characters(number: 16)
+        is_expected.to eq false
+      end
+      it '一意性があること' do
+        user.name = other_user.name
+        is_expected.to eq false
+      end
+    end
+
+    context 'introductionカラム' do
+      it '150文字以下であること: 150文字は〇' do
+        user.introduction = Faker::Lorem.characters(number: 150)
+        is_expected.to eq true
+      end
+      it '150文字以下であること: 151文字は×' do
+        user.introduction = Faker::Lorem.characters(number: 151)
+        is_expected.to eq false
+      end
     end
   end
 
-  context 'ユーザー名がない場合' do
-    it '登録できない' do
-      expect(build(:user, name: nil)).to be_invalid
-    end
-  end
-
-  context 'メールアドレスがない場合' do
-    it '登録できない' do
-      expect(build(:user, email: nil)).to be_invalid
-    end
-  end
-
-  context 'メールアドレスが重複する場合' do
-    it '登録できない' do
-      create(:user, email: 'test@example.com')
-      expect(build(:user, email: 'test@example.com')).to be_invalid
+  describe 'アソシエーションのテスト' do
+    context 'post_imageモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:post_images).macro).to eq :has_many
+      end
     end
   end
 end
