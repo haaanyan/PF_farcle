@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   attachment :image
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 15}
   validates :email, presence: true
   validates :prefecture, presence: true
   validates :product, presence: true
   validates :history, presence: true
-  validates :introduction, presence: true
+  validates :introduction, presence: true, length: {maximum: 150}
 
   has_many :post_images, dependent: :destroy
   has_many :post_image_comments, dependent: :destroy

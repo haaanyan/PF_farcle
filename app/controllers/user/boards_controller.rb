@@ -29,6 +29,11 @@ class User::BoardsController < ApplicationController
 
   def edit
     @board = Board.find(params[:id])
+    if @board.user == current_user
+      render "edit"
+    else
+      redirect_to boards_path
+    end
   end
 
   def update
