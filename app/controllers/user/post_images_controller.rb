@@ -28,6 +28,11 @@ class User::PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    if @post_image.user == current_user
+      render "edit"
+    else
+      redirect_to post_images_path
+    end
   end
 
   def update
