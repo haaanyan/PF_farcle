@@ -1,7 +1,7 @@
 <% content_for :title, "新規会員登録 farcle" %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-ms-10 mt-3 mx-auto bg-light">
+    <div class="col-lg-8 col-md-8 col-ms-10 mt-3 mb-3 mx-auto bg-light">
       <%= render "shared/form_error", model: @user %>
       <h2 class="text-center mt-3">新規会員登録</h2>
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
