@@ -1,5 +1,6 @@
 # farcle
 ![スクリーンショット 2021-06-27 17 20 36](https://user-images.githubusercontent.com/78293400/123781353-19788e00-d90f-11eb-9b30-159ce2a33636.png)
+- サイトURLはこちら http://farcle.site/
 
 
 ## サイト概要
@@ -34,14 +35,13 @@ fercle では掲示板で農業に関する悩みを相談し合ったり、自�
 - 自慢の作物を共有したい時
 - 他の農家の人と交流したい時
 
-##　機能一覧
+## 機能一覧
 - ユーザー認証機能(devise)
 - 画像投稿機能(refile)
 - コメント機能(Ajax)
 - いいね機能(Ajax)
 - フォロー機能
 - 掲示板トピックに対する検索機能
--
 
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1Pr7tPv_95CqJphTkH9gsumO9mFqO6Pg5/view?usp=sharing)
@@ -61,5 +61,5 @@ https://docs.google.com/spreadsheets/d/1oGHWAgmpknTnL-Pu6rWYfPJYQWHc421sZ9f-MLzv
 - IDE：Cloud9
 
 ## 使用素材
-- [food.foto]https://food-foto.jp/f_181.html
-- [PAKUTASO]https://www.pakutaso.com/nature/
+- [food.foto](https://food-foto.jp/f_181.html)
+- [PAKUTASO](https://www.pakutaso.com/nature/)
