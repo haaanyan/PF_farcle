@@ -1,4 +1,6 @@
 # farcle
+![スクリーンショット 2021-06-27 17 20 36](https://user-images.githubusercontent.com/78293400/123781353-19788e00-d90f-11eb-9b30-159ce2a33636.png)
+
 
 ## サイト概要
 
@@ -31,6 +33,16 @@ fercle では掲示板で農業に関する悩みを相談し合ったり、自�
 - 農業における悩みを相談したい時
 - 自慢の作物を共有したい時
 - 他の農家の人と交流したい時
+
+##　機能一覧
+- ユーザー認証機能(devise)
+- 画像投稿機能(refile)
+- コメント機能(Ajax)
+- いいね機能(Ajax)
+- フォロー機能
+- 掲示板トピックに対する検索機能
+-
+
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1Pr7tPv_95CqJphTkH9gsumO9mFqO6Pg5/view?usp=sharing)
 - [UI Flow](https://drive.google.com/file/d/1ioFcVDr-PH7stFisxqE_jqgv2Ozq1vQG/view?usp=sharing)
@@ -49,6 +61,5 @@ https://docs.google.com/spreadsheets/d/1oGHWAgmpknTnL-Pu6rWYfPJYQWHc421sZ9f-MLzv
 - IDE：Cloud9
 
 ## 使用素材
-
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
+- [food.foto]https://food-foto.jp/f_181.html
+- [PAKUTASO]https://www.pakutaso.com/nature/
