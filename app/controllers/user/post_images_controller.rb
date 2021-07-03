@@ -3,6 +3,7 @@ class User::PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all
+    @tag_list = Tag.all
   end
 
   def new
@@ -20,7 +21,7 @@ class User::PostImagesController < ApplicationController
     end
     tags = Vision.get_image_data(@post_image.image)
       tags.each do |tag|
-        @post_image.tags.create(name: tag)
+        @post_image.tags.create(tag_name: tag)
       end
   end
 
@@ -28,6 +29,7 @@ class User::PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
     @post_image_comment = PostImageComment.new
     @user = @post_image.user
+    @post_image_tags = @post_image.tags
   end
 
   def edit
