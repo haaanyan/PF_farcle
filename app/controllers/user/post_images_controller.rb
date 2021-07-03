@@ -18,6 +18,10 @@ class User::PostImagesController < ApplicationController
     else
       render :new
     end
+    tags = Vision.get_image_data(@post_image.image)
+      tags.each do |tag|
+        @post_image.tags.create(name: tag)
+      end
   end
 
   def show
