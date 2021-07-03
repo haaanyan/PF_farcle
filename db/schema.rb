@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_125727) do
+ActiveRecord::Schema.define(version: 2021_07_03_020856) do
 
   create_table "board_comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -50,13 +50,27 @@ ActiveRecord::Schema.define(version: 2021_06_14_125727) do
     t.string "image_id", null: false
     t.integer "user_id", null: false
   end
-  
 
   create_table "relationships", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "following_id", null: false
     t.integer "follower_id", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "post_image_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_tag_maps_on_post_image_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
