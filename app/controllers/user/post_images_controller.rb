@@ -14,15 +14,15 @@ class User::PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
+      tags = Vision.get_image_data(@post_image.image)
+      tags.each do |tag|
+        @post_image.tags.create(tag_name: tag)
+      end
       flash[:notice] = "投稿しました"
       redirect_to post_image_path(@post_image.id)
     else
       render :new
     end
-    tags = Vision.get_image_data(@post_image.image)
-      tags.each do |tag|
-        @post_image.tags.create(tag_name: tag)
-      end
   end
 
   def show
@@ -44,6 +44,11 @@ class User::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if @post_image.update(post_image_params)
+      tags = Vision.get_image_data(@post_image.image)
+      @post_image.tags.delete_all
+      tags.each do |tag|
+        @post_image.tags.create(tag_name: tag)
+      end
       flash[:notice] = "変更を保存しました"
       redirect_to post_image_path(@post_image.id)
     else

@@ -17,12 +17,12 @@
               <div class="mt-2">
                 <% @post_image.tags.each do |tag| %>
                   <div class="badge badge-secondary">
-                    <%= link_to tag.tag_name %>
+                    <%= tag.tag_name %>
                   </div>
                 <% end %>
               </div>
               <% else %>
-                <p>タグの登録がありません</p>
+                <p class ="badge badge-info">タグの登録がありません</p>
               <% end %>
 
               <p class="card-text">
