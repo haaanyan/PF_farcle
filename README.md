@@ -42,6 +42,7 @@ fercle では掲示板で農業に関する悩みを相談し合ったり、自�
 - いいね機能(Ajax)
 - フォロー機能
 - 掲示板トピックに対する検索機能
+- Google Vision AIを用いたタグ付機能
 
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1Pr7tPv_95CqJphTkH9gsumO9mFqO6Pg5/view?usp=sharing)
