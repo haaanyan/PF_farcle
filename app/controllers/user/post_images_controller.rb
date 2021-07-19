@@ -3,7 +3,6 @@ class User::PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all
-    @tag_list = Tag.all
   end
 
   def new
