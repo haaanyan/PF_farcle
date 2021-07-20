@@ -17,7 +17,7 @@
               <div class="mt-2">
                 <% @post_image.tags.each do |tag| %>
                   <div class="badge badge-secondary">
-                    <%= tag.tag_name %>
+                    <%= link_to tag.tag_name, tag_path(tag) %>
                   </div>
                 <% end %>
               </div>

@@ -1,0 +1,36 @@
+<% content_for :title, "タグ「#{@tag.tag_name}」の投稿一覧 farcle" %>
+
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-12 mb-3">
+      <h2>タグ「<%= @tag.tag_name %>」の投稿一覧（<%= @post_images.total_count %>件）</h2>
+    </div>
+
+    <% @post_images.each do |post_image| %>
+      <div class="col-md-3">
+        <div class="card-deck mt-5">
+          <div class="card mb-3">
+            <%= link_to post_image_path(post_image.id) do %>
+              <%= attachment_image_tag post_image, :image, size: "250x200", class:"card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <h6 class="card-title">
+                <i class="far fa-user" style="color:darkblue"></i>
+                  <%= link_to user_path(post_image.user) do %>
+                    <%= post_image.user.name %>
+                  <% end %>
+              </h6>
+              <p class="card-text">
+                <i class="far fa-comments"></i> <%= post_image.post_image_comments.count %>
+                <i class="fas fa-heart" style="color:violet"></i>︎ <%= post_image.favorites.count %>
+              </p>
+            </div>
+            <div class="card-footer text-right">
+              <small class="text-muted"><%= time_ago_in_words(post_image.updated_at) %>前</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :post_image_comments, only: %i[create destroy]
     end
 
+    resources :tags, only: [:show]
+
     resources :boards do
       collection do
         get 'search'

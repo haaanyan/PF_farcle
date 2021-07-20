@@ -2,7 +2,7 @@ class User::PostImagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.all.order(updated_at: :desc)
   end
 
   def new
