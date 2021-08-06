@@ -2,7 +2,7 @@ class User::PostImagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.all.order(updated_at: :desc)
   end
 
   def new
@@ -15,7 +15,7 @@ class User::PostImagesController < ApplicationController
     if @post_image.save
       tags = Vision.get_image_data(@post_image.image)
       tags.each do |tag|
-        @post_image.tags.create(tag_name: tag)
+        @post_image.tags.create(tag_name: tag) 
       end
       flash[:notice] = "投稿しました"
       redirect_to post_image_path(@post_image.id)
